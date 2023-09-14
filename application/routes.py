@@ -28,14 +28,15 @@ def bankclassify():
 
    #convert data to json
     input_data = json.dumps({"age": age, "job": job, "marital": marital, "education": education, "default": default, "balance": balance, "housing": housing, "loan": loan})
-
+    print(input_data)
     #url for bank marketing model
-    #url = "http://localhost:5000/api"
-    url = "https://bank-model-app.herokuapp.com/api"
+    #url = "http://127.0.0.1:5000/api"
+
+    url = "https://bank-model-app-9857116c53be.herokuapp.com/api"
   
     #post data to url
     results =  requests.post(url, input_data)
-
+    print(results)
     #send input values and prediction result to index.html for display
     return render_template("index.html", age = age, job = job, marital = marital, education = education, default = default, balance = balance, housing = housing, loan = loan,  results=results.content.decode('UTF-8'))
   
